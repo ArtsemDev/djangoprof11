@@ -1,0 +1,28 @@
+{% extends 'blog/index.html' %}
+
+{% block title %}
+{{ post.title }}
+{% endblock %}
+
+{% block content %}
+
+        {% include 'blog/components/navigation.html' %}
+        <!-- Page Header-->
+        {% with post.title as heading %}
+            {% with post.date_publish as subheading %}
+                {% include 'blog/components/header.html' %}
+            {% endwith %}
+        {% endwith %}
+        <!-- Post Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        {{ post.body }}
+                    </div>
+                </div>
+            </div>
+        </article>
+       {% include 'blog/components/footer.html' %}
+        <!-- Page Header-->
+{% endblock %}

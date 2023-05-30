@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.timezone import now
 
 
@@ -74,6 +75,22 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('blog_post_detail', kwargs={'post_slug': self.slug})
+
     class Meta:
         verbose_name = 'пост'
         verbose_name_plural = 'посты'
+
+
+class Contact(models.Model):
+    username = models.CharField(max_length=64, null=False, blank=False)
+    email = models.EmailField(null=False, blank=False)
+    message = models.TextField(null=False, blank=False)
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        verbose_name = 'контакт'
+        verbose_name_plural = 'контакты'

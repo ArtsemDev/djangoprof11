@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Post
+from .models import Category, Post, Contact
 
 
 class PostStackedInline(admin.StackedInline):
@@ -23,3 +23,8 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title', )}
+
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    ...
